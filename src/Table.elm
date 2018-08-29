@@ -2,12 +2,12 @@ module Table exposing
     ( view
     , config, stringColumn, intColumn, floatColumn
     , State, initialSort
+    , getSortedData
     , Column, customColumn, veryCustomColumn
     , Sorter, unsortable, increasingBy, decreasingBy
     , increasingOrDecreasingBy, decreasingOrIncreasingBy
     , Config, customConfig, Customizations, HtmlDetails, Status(..)
     , defaultCustomizations
-    , getSortedData
     )
 
 {-| This library helps you create sortable tables. The crucial feature is that it
@@ -34,6 +34,11 @@ I recommend checking out the [examples] to get a feel for how it works.
 # State
 
 @docs State, initialSort
+
+
+# Sorted Data Access
+
+@docs getSortedData
 
 
 # Crazy Customization
@@ -264,12 +269,12 @@ simpleTheadHelp ( name, status, click ) =
 
 darkGrey : String -> Html msg
 darkGrey symbol =
-    Html.span [ Attr.style "color" "#555" ] [ Html.text ("\u{00A0}" ++ symbol) ]
+    Html.span [ Attr.style "color" "#555" ] [ Html.text (" " ++ symbol) ]
 
 
 lightGrey : String -> Html msg
 lightGrey symbol =
-    Html.span [ Attr.style "color" "#ccc" ] [ Html.text ("\u{00A0}" ++ symbol) ]
+    Html.span [ Attr.style "color" "#ccc" ] [ Html.text (" " ++ symbol) ]
 
 
 simpleRowAttrs : data -> List (Attribute msg)
@@ -582,6 +587,8 @@ findSorter selectedColumn columnData =
                 findSorter selectedColumn remainingColumnData
 
 
+{-| Return the data sorted exactly as it will be displayed on the screen.
+-}
 getSortedData : Config data msg -> State -> List data -> List data
 getSortedData (Config { toId, toMsg, columns, customizations }) state data =
     sort state columns data
