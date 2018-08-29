@@ -1,7 +1,7 @@
 module Table exposing
     ( view
     , config, stringColumn, intColumn, floatColumn
-    , State, initialSort
+    , State, initialSort, getSortedData
     , Column, customColumn, veryCustomColumn
     , Sorter, unsortable, increasingBy, decreasingBy
     , increasingOrDecreasingBy, decreasingOrIncreasingBy
@@ -438,10 +438,10 @@ that.
 
 -}
 view : Config data msg -> State -> List data -> Html msg
-view (Config { toId, toMsg, columns, customizations }) state data =
+view (Config { toId, toMsg, columns, customizations } as config) state data =
     let
         sortedData =
-            sort state columns data
+            getSortedData config state data
 
         theadDetails =
             customizations.thead (List.map (toHeaderInfo state toMsg) columns)
@@ -580,6 +580,11 @@ findSorter selectedColumn columnData =
             else
                 findSorter selectedColumn remainingColumnData
 
+
+
+getSortedData : Config data msg -> State -> List data -> List data
+getSortedData (Config { toId, toMsg, columns, customizations }) state data =
+    sort state columns data
 
 
 -- SORTERS
