@@ -63,6 +63,7 @@ is not that crazy.
 
 -}
 
+import Char
 import Html exposing (Attribute, Html)
 import Html.Attributes as Attr
 import Html.Events as E
@@ -138,7 +139,7 @@ have a column for name and age. We would create a `Config` like this:
 You provide the following information in your table configuration:
 
   - `toId` &mdash; turn a `Person` into a unique ID. This lets us use
-    [`Html.Keyed`][keyed] under the hood to make resorts faster.
+    [`Html.Keyed`][keyed] under the hood to make re-sorts faster.
   - `columns` &mdash; specify some columns to show.
   - `toMsg` &mdash; a way to send new table states to your app as messages.
 
@@ -267,14 +268,19 @@ simpleTheadHelp ( name, status, click ) =
     Html.th [ click ] content
 
 
+nbsp : String
+nbsp =
+    String.fromList [ Char.fromCode 0xA0 ]
+
+
 darkGrey : String -> Html msg
 darkGrey symbol =
-    Html.span [ Attr.style "color" "#555" ] [ Html.text ("\u{00A0}" ++ symbol) ]
+    Html.span [ Attr.style "color" "#555" ] [ Html.text (nbsp ++ symbol) ]
 
 
 lightGrey : String -> Html msg
 lightGrey symbol =
-    Html.span [ Attr.style "color" "#ccc" ] [ Html.text ("\u{00A0}" ++ symbol) ]
+    Html.span [ Attr.style "color" "#ccc" ] [ Html.text (nbsp ++ symbol) ]
 
 
 simpleRowAttrs : data -> List (Attribute msg)
