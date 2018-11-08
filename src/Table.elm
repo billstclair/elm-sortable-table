@@ -18,7 +18,7 @@ truth is pretty great!
 
 I recommend checking out the [examples] to get a feel for how it works.
 
-[examples]: https://github.com/evancz/elm-sortable-table/tree/master/examples
+[examples]: https://github.com/billstclair/elm-sortable-table/tree/master/examples
 
 
 # View
@@ -145,7 +145,7 @@ You provide the following information in your table configuration:
 See the [examples] to get a better feel for this!
 
 [keyed]: http://package.elm-lang.org/packages/elm-lang/html/latest/Html-Keyed
-[examples]: https://github.com/evancz/elm-sortable-table/tree/master/examples
+[examples]: https://github.com/billstclair/elm-sortable-table/tree/master/examples
 
 -}
 config :
@@ -269,12 +269,12 @@ simpleTheadHelp ( name, status, click ) =
 
 darkGrey : String -> Html msg
 darkGrey symbol =
-    Html.span [ Attr.style "color" "#555" ] [ Html.text (" " ++ symbol) ]
+    Html.span [ Attr.style "color" "#555" ] [ Html.text ("\u{00A0}" ++ symbol) ]
 
 
 lightGrey : String -> Html msg
 lightGrey symbol =
-    Html.span [ Attr.style "color" "#ccc" ] [ Html.text (" " ++ symbol) ]
+    Html.span [ Attr.style "color" "#ccc" ] [ Html.text ("\u{00A0}" ++ symbol) ]
 
 
 simpleRowAttrs : data -> List (Attribute msg)
