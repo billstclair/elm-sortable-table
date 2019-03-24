@@ -490,14 +490,14 @@ toHeaderInfo (State sortName isReversed) toMsg { name, sorter } =
             ( name, Unsortable, onClick sortName isReversed toMsg )
 
         Increasing _ ->
-            ( name, Sortable (name == sortName), onClick name False toMsg )
+            ( name, Sortable (name /= sortName), onClick name False toMsg )
 
         Decreasing _ ->
             ( name, Sortable (name == sortName), onClick name False toMsg )
 
         IncOrDec _ ->
             if name == sortName then
-                ( name, Reversible (Just isReversed), onClick name (not isReversed) toMsg )
+                ( name, Reversible (Just (not isReversed)), onClick name (not isReversed) toMsg )
 
             else
                 ( name, Reversible Nothing, onClick name False toMsg )

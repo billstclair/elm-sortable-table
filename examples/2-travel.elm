@@ -36,7 +36,7 @@ init sights =
     let
         model =
             { sights = sights
-            , tableState = Table.initialSort "Year"
+            , tableState = Table.initialSort "Price"
             }
     in
     ( model, Cmd.none )
@@ -184,7 +184,7 @@ timeColumn =
     Table.customColumn
         { name = "Time"
         , viewData = timeToString << .time
-        , sorter = Table.increasingOrDecreasingBy .time
+        , sorter = Table.decreasingOrIncreasingBy .time
         }
 
 
