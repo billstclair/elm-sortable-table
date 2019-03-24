@@ -36,7 +36,7 @@ init sights =
     let
         model =
             { sights = sights
-            , tableState = Table.initialSort "Price"
+            , tableState = Table.initialSort "Time"
             }
     in
     ( model, Cmd.none )
