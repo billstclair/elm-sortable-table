@@ -2,13 +2,13 @@ module Table exposing
     ( view
     , config, stringColumn, intColumn, floatColumn
     , State, initialSort
+    , getSortState, sortBy
     , getSortedData
     , Column, customColumn, veryCustomColumn
     , Sorter, unsortable, increasingBy, decreasingBy
     , increasingOrDecreasingBy, decreasingOrIncreasingBy
     , Config, customConfig, Customizations, HtmlDetails, Status(..)
     , defaultCustomizations
-    , getSortState, sortBy
     )
 
 {-| This library helps you create sortable tables. The crucial feature is that it
@@ -35,6 +35,7 @@ I recommend checking out the [examples] to get a feel for how it works.
 # State
 
 @docs State, initialSort
+@docs getSortState, sortBy
 
 
 # Sorted Data Access
