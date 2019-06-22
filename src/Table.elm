@@ -8,6 +8,7 @@ module Table exposing
     , increasingOrDecreasingBy, decreasingOrIncreasingBy
     , Config, customConfig, Customizations, HtmlDetails, Status(..)
     , defaultCustomizations
+    , getSortState, sortBy
     )
 
 {-| This library helps you create sortable tables. The crucial feature is that it
@@ -94,6 +95,26 @@ yachts to be sorted by length by default, you might say:
 initialSort : String -> State
 initialSort header =
     State header False
+
+
+{-| Inspect the current table state. Which column is being sorted by,
+and whether the sort order is reversed. This could be useful for storing
+the sort state in a URL or somewhere else outside of Elm.
+-}
+getSortState : State -> ( String, Bool )
+getSortState state =
+    case state of
+        State column isReversed ->
+            ( column, isReversed )
+
+
+{-| Create a table state with a column to sort by, and whether to
+reverse the order. This allows a sort to be applied URL params or
+somewhere else outside of Elm.
+-}
+sortBy : String -> Bool -> State
+sortBy =
+    State
 
 
 
