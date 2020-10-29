@@ -1,4 +1,4 @@
-module Main exposing (Model, Msg(..), Sight, checkboxColumn, config, init, main, missionSights, timeColumn, timeToString, toRowAttrs, toggle, update, view, viewCheckbox, viewSummary)
+module Travel exposing (Model, Msg(..), Sight, checkboxColumn, config, init, main, missionSights, timeColumn, timeToString, toRowAttrs, toggle, update, view, viewCheckbox, viewSummary)
 
 import Browser
 import Html exposing (Attribute, Html, div, h1, input, p, text)

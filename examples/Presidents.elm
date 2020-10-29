@@ -1,4 +1,4 @@
-module Main exposing (Model, Msg(..), Person, config, init, main, presidents, update, view)
+module Presidents exposing (Model, Msg(..), Person, config, init, main, presidents, update, view)
 
 import Browser
 import Html exposing (Html, div, h1, input, text)
